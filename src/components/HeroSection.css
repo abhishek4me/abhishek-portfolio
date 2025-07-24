@@ -1,0 +1,91 @@
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(6, 0, 16, 0.95) 0%, rgba(108, 53, 225, 0.1) 100%);
+    background-image: 
+      url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB2aWV3Qm94PSIwIDAgNCA0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjMiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjEiIHk9IjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjIiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjAiIHk9IjIiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjwvc3ZnPg=='),
+      linear-gradient(135deg, rgba(6, 0, 16, 0.95) 0%, rgba(108, 53, 225, 0.1) 100%);
+    background-size: 4px 4px, cover;
+    background-blend-mode: multiply, normal;
+  }
+  
+  .hero-container {
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  /* Curved Text Container */
+  .curved-text-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 1rem;
+  }
+  
+  /* ProfileCard Wrapper */
+  .profile-card-wrapper {
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+  }
+  
+  .subtitle-container {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .hero-subtitle {
+    font-family: 'Creative Thoughts', cursive;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    color: #FFFFFF;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(108, 53, 225, 0.5);
+    text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 1.5rem;
+    }
+    
+    .hero-container {
+      gap: 1.5rem;
+    }
+    
+    .curved-text-container {
+      margin-bottom: 0.5rem;
+    }
+    
+    .profile-card-wrapper {
+      max-width: 280px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-section {
+      padding: 1rem;
+    }
+    
+    .hero-container {
+      gap: 1rem;
+    }
+    
+    .profile-card-wrapper {
+      max-width: 250px;
+    }
+  }
+  

@@ -1,0 +1,66 @@
+.curved-loop-jacket {
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem 0;
+  }
+  
+  .curved-loop-svg {
+    user-select: none;
+    width: 100%;
+    aspect-ratio: 100 / 12;
+    overflow: visible;
+    display: block;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    fill: #FFFFFF;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    font-weight: 700;
+    line-height: 1;
+    font-family: 'Hanson Bold', Arial, sans-serif;
+  }
+  
+  /* Custom styling to match your purple theme */
+  .custom-text-style {
+    fill: #FFFFFF;
+    font-family: 'Hanson Bold', Arial, sans-serif;
+    font-weight: 700;
+    filter: drop-shadow(0 0 20px #6C35E1) drop-shadow(0 0 40px #9F7AEA);
+    animation: text-glow 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes text-glow {
+    from {
+      filter: drop-shadow(0 0 20px #6C35E1) drop-shadow(0 0 40px #9F7AEA);
+    }
+    to {
+      filter: drop-shadow(0 0 30px #6C35E1) drop-shadow(0 0 60px #9F7AEA) drop-shadow(0 0 80px #FFFFFF);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .curved-loop-jacket {
+      min-height: 15vh;
+      padding: 1rem 0;
+    }
+    
+    .curved-loop-svg {
+      font-size: clamp(2rem, 6vw, 4rem);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .curved-loop-jacket {
+      min-height: 12vh;
+      padding: 0.5rem 0;
+    }
+    
+    .curved-loop-svg {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+    }
+  }
+  
