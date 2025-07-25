@@ -1,116 +1,137 @@
 .contact-section {
-    padding: 4rem 0 6rem 0;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(6, 0, 16, 0.95) 0%, rgba(108, 53, 225, 0.1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB2aWV3Qm94PSIwIDAgNCA0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiM2QzM1RTEyMCIvPjwvc3ZnPg==');
+  background-size: 4px 4px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* FIXED: Single line header container */
+.contact-title-float {
+  text-align: center;
+  background: rgba(6, 0, 16, 0.1);
+  border-radius: 15px;
+  margin: 0 auto 3rem auto;
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 1;
+  width: auto; /* FIXED: Auto width to fit content */
+  min-width: 300px; /* FIXED: Minimum width to accommodate text */
+  display: inline-block; /* FIXED: Inline-block for natural width */
+  
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: geometricPrecision;
+}
+
+/* FIXED: Single line text styling */
+.contact-title-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 50%, #9F7AEA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* FIXED: Adjusted font size range */
+  font-weight: 900;
+  font-family: 'Hanson Bold', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.1; /* FIXED: Tighter line height */
+  text-align: center;
+  white-space: nowrap; /* FIXED: Prevent text wrapping */
+  
+  transform: translate3d(0, 0, 0);
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: geometricPrecision;
+  filter: none;
+  zoom: 100%;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icons-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.social-handles {
+  position: relative;
+}
+
+/* Responsive design with single line preservation */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1.5rem;
   }
   
-  .contact-description {
-    text-align: center;
-    font-family: 'Creative Thoughts', cursive;
-    font-size: 1.3rem;
-    color: #E0E0E0;
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .contact-title-float {
+    margin: 0 auto 2rem auto;
+    padding: 1rem 1.5rem;
+    min-width: 250px; /* FIXED: Adjusted for mobile */
   }
   
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+  .contact-title-text {
+    font-size: clamp(2rem, 6vw, 2.8rem); /* FIXED: Mobile font size range */
+    letter-spacing: 1px; /* FIXED: Reduced letter spacing for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 2rem 1rem;
   }
   
-  .contact-button {
-    display: inline-flex;
-    align-items: center;
-    background: #FFD700;
-    color: #000000;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border: 2px solid #E70000;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
+  .contact-title-float {
+    margin: 0 auto 1.5rem auto;
+    padding: 0.8rem 1rem;
+    min-width: 200px; /* FIXED: Minimum width for very small screens */
   }
   
-  .contact-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
+  .contact-title-text {
+    font-size: clamp(1.8rem, 7vw, 2.2rem); /* FIXED: Smaller mobile range */
+    letter-spacing: 0.5px; /* FIXED: Minimal letter spacing */
+  }
+}
+
+/* FIXED: Very small screens - ensure single line */
+@media (max-width: 320px) {
+  .contact-title-text {
+    font-size: 1.6rem; /* FIXED: Fixed size for very small screens */
+    letter-spacing: 0px;
   }
   
-  .contact-button:hover::before {
-    left: 100%;
+  .contact-title-float {
+    padding: 0.6rem 0.8rem;
+    min-width: 180px;
   }
-  
-  .contact-icon {
-    margin-right: 10px;
-    font-size: 1.3rem;
-  }
-  
-  .linkedin-btn:hover {
-    background: #0A66C2;
-    color: #FFFFFF;
-    border-color: #FFD700;
-    transform: translateY(-2px);
-  }
-  
-  .email-btn:hover {
-    background: #FF8C00;
-    color: #FFFFFF;
-    border-color: #FFD700;
-    transform: translateY(-2px);
-  }
-  
-  .ig-btn:hover {
-    background: linear-gradient(45deg, #E1306C, #F56040);
-    color: #FFFFFF;
-    border-color: #FFD700;
-    transform: translateY(-2px);
-  }
-  
-  @media (max-width: 768px) {
-    .contact-links {
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    
-    .contact-button {
-      width: 250px;
-      justify-content: center;
-      padding: 12px 25px;
-    }
-    
-    .contact-description {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .contact-section {
-      padding: 3rem 0 4rem 0;
-    }
-    
-    .contact-button {
-      width: 200px;
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
-    
-    .contact-description {
-      font-size: 1.1rem;
-    }
-  }
-  
+}
