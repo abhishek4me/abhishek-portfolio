@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProfileCard from './ProfileCard/ProfileCard';
+import DarkVeil from './DarkVeil/DarkVeil';
 import './HeroSection.css';
 
 const HeroSection = () => {
@@ -8,7 +9,7 @@ const HeroSection = () => {
   const scrollToExperience = () => {
     const experienceSection = document.getElementById('experience-section');
     if (experienceSection) {
-      const offsetTop = experienceSection.offsetTop - 80; // 80px offset from top
+      const offsetTop = experienceSection.offsetTop - 80;
       
       window.scrollTo({
         top: offsetTop,
@@ -19,6 +20,19 @@ const HeroSection = () => {
 
   return (
     <section className="hero-section">
+      {/* DarkVeil Animated Background */}
+      <div className="darkveil-background">
+        <DarkVeil
+          hueShift={270} // Purple hue for your theme
+          noiseIntensity={0.03}
+          scanlineIntensity={0}
+          speed={0.4}
+          scanlineFrequency={0}
+          warpAmount={0.3}
+          resolutionScale={1}
+        />
+      </div>
+
       <div className="hero-container">
         
         {/* Two-column layout - ProfileCard on left, content on right */}
@@ -80,7 +94,7 @@ const HeroSection = () => {
                   className="hero-btn-primary"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={scrollToExperience} // SMOOTH SCROLL FUNCTION
+                  onClick={scrollToExperience}
                 >
                   View My Work
                 </motion.button>
