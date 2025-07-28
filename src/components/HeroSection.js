@@ -23,7 +23,7 @@ const HeroSection = () => {
       {/* DarkVeil Animated Background */}
       <div className="darkveil-background">
         <DarkVeil
-          hueShift={270} // Purple hue for your theme
+          hueShift={270}
           noiseIntensity={0.03}
           scanlineIntensity={0}
           speed={0.4}
@@ -38,7 +38,7 @@ const HeroSection = () => {
         {/* Two-column layout - ProfileCard on left, content on right */}
         <div className="hero-main-content">
           
-          {/* Left column - ProfileCard */}
+          {/* Left column - Animated ProfileCard with updated info */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, x: -50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -53,16 +53,14 @@ const HeroSection = () => {
             <ProfileCard
               name="Abhishek R S"
               title="B.Tech Electronics and CS"
-              handle="abhishek6969"
-              status="Available for opportunities"
               contactText="Let's Connect"
-              avatarUrl="/hhh.jpeg"
-              miniAvatarUrl="/hhh.jpeg"
+              avatarUrl="https://iili.io/Fvpn2WX.md.jpg"
+              miniAvatarUrl="https://iili.io/Fvpn2WX.md.jpg"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
               onContactClick={() => {
-                window.open('https://www.linkedin.com/in/abhishek6969/', '_blank');
+                window.open('https://github.com/abhishek4me', '_blank');
               }}
             />
           </motion.div>
@@ -103,7 +101,7 @@ const HeroSection = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    window.open('https://www.linkedin.com/in/abhishek6969/', '_blank');
+                    window.open('https://github.com/abhishek4me', '_blank');
                   }}
                 >
                   Get In Touch
