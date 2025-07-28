@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#D60000" />
+    <meta name="description" content="Abhishek R S - Portfolio | Sophomore B.Tech Electronics and CS | Tech Enthusiast showcasing skills, projects, and achievements" />
+    <meta name="keywords" content="Abhishek R S, Portfolio, Electronics, Computer Science, B.Tech, Python, Programming, Tech Enthusiast" />
+    <meta name="author" content="Abhishek R S" />
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preload" href="%PUBLIC_URL%/fonts/Hanson-Bold.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="%PUBLIC_URL%/fonts/Creative-Thoughts.otf" as="font" type="font/otf" crossorigin>
+    
+    <!-- Google Fonts fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>Abhishek R S | Portfolio</title>
+    
+    <!-- Additional meta tags for better SEO -->
+    <meta property="og:title" content="Abhishek R S - Portfolio" />
+    <meta property="og:description" content="Sophomore B.Tech Electronics and CS | Tech Enthusiast" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com" />
+    
+    <!-- Favicon and app icons -->
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        margin: 0;
+        background-color: #D60000;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Loading animation */
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #D60000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-text {
+        color: #FFD700;
+        font-size: 2rem;
+        animation: pulse 1.5s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Loading screen -->
+    <div id="loading" class="loading">
+      <div class="loading-text">Loading Portfolio...</div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <!-- Remove loading screen after app loads -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.style.opacity = '0';
+            setTimeout(function() {
+              loading.style.display = 'none';
+            }, 300);
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
