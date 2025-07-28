@@ -68,3 +68,33 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(45deg, #9F7AEA, #6C35E1);
 }
+/* Global smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for fixed headers */
+}
+
+/* Enhanced smooth scrolling for webkit browsers */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scroll for all elements */
+* {
+  scroll-behavior: smooth;
+}

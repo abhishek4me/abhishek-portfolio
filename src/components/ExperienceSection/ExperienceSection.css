@@ -1,160 +1,110 @@
 .experience-section {
   min-height: 100vh;
-  padding: 4rem 2rem;
   background: linear-gradient(135deg, rgba(6, 0, 16, 0.95) 0%, rgba(108, 53, 225, 0.1) 100%);
+  padding: 5rem 0;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
 }
 
 .experience-section .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  background: rgba(6, 0, 16, 0.9);
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(108, 53, 225, 0.3);
-  border: 2px solid #6C35E1;
-  position: relative;
-  z-index: 1;
-  backdrop-filter: blur(10px);
-  
-  /* Anti-blur properties */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  padding: 0 2rem;
+  width: 100%;
 }
 
-/* Experience title styling with blur fix */
+/* ScrollFloat title styling */
 .experience-title-float {
   text-align: center;
-  background: rgba(6, 0, 16, 0.1);
-  border-radius: 15px;
-  margin: 0 0 3rem 0;
-  padding: 1rem 0;
-  
-  /* Anti-blur properties */
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  margin-bottom: 4rem;
 }
 
 .experience-title-text {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 50%, #9F7AEA 100%);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #FFFFFF 0%, #9F7AEA 50%, #6C35E1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(108, 53, 225, 0.3));
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 900;
-  font-family: 'Hanson Bold', Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.2;
-  
-  /* Anti-blur properties */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
+  margin: 0;
 }
 
+/* Experience list styling */
 .experience-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .experience-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
-  padding: 1.5rem;
   background: rgba(108, 53, 225, 0.1);
-  border-radius: 12px;
-  border: 1px solid rgba(108, 53, 225, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  /* Anti-blur properties */
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.experience-item p {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #E0E0E0;
-  margin: 0;
-  font-weight: 400;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  position: relative;
-  z-index: 1;
-  
-  /* Anti-blur properties */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-}
-
-/* Rest of the CSS remains the same... */
-.experience-bullet {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6C35E1 0%, #9F7AEA 100%);
-  flex-shrink: 0;
-  margin-top: 0.5rem;
-  position: relative;
-  box-shadow: 0 0 10px rgba(108, 53, 225, 0.5);
-}
-
-.experience-bullet::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(159, 122, 234, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(108, 53, 225, 0.4);
-  border-color: #9F7AEA;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(108, 53, 225, 0.3);
+}
+
+.experience-bullet {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #6C35E1, #9F7AEA);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(159, 122, 234, 0.6);
+}
+
+.experience-item p {
+  color: #E0E0E0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .experience-section {
-    padding: 3rem 1.5rem;
+    padding: 3rem 0;
   }
   
-  .experience-section .container {
+  .experience-list {
+    gap: 1.5rem;
+  }
+  
+  .experience-item {
     padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .experience-bullet {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-section .container {
+    padding: 0 1rem;
   }
   
   .experience-item {
     padding: 1.2rem;
-    gap: 1rem;
-  }
-  
-  .experience-item p {
-    font-size: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
   }
 }

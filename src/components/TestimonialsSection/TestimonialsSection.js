@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ScrollFloat from '../ScrollFloat/ScrollFloat';
 import TiltedCard from '../TiltedCard/TiltedCard';
@@ -25,7 +25,7 @@ const TestimonialsSection = () => {
       author: "Karthik R K",
       title: "Benchmate",
       image: "https://i.ibb.co/dJ0jhJz0/20241125-101235-EDIT.jpg",
-      linkedin: "https://www.linkedin.com/in/karthik-rk-22b97733b/",
+      linkedin: "https://www.linkedin.com/in/karthik-r-k-22b97733b/",
       id: 2
     },
     {
@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
     }
   ];
 
-  const [focusedCard, setFocusedCard] = useState(2); // Default to middle card
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
     <section className="testimonials-section">
@@ -58,56 +58,40 @@ const TestimonialsSection = () => {
         ref={ref}
         className="testimonials-grid"
       >
-        {testimonials.map((testimonial, originalIndex) => {
-          // Calculate dynamic position based on focused card
-          let displayIndex;
-          if (focusedCard === 1) { // Karan focused
-            displayIndex = originalIndex === 0 ? 1 : originalIndex === 1 ? 0 : 2;
-          } else if (focusedCard === 3) { // Madhav focused
-            displayIndex = originalIndex === 2 ? 1 : originalIndex === 0 ? 2 : 0;
-          } else { // Karthik focused (default)
-            displayIndex = originalIndex;
-          }
-          
-          const isCenter = displayIndex === 1;
-          const position = displayIndex === 0 ? 'left' : displayIndex === 1 ? 'center' : 'right';
+        {testimonials.map((testimonial, index) => {
+          const isHovered = hoveredCard === testimonial.id;
+          const isCenter = index === 1;
           
           return (
             <motion.div
-              key={testimonial.id} // FIXED: Use stable ID instead of changing key
-              className={`testimonial-card-wrapper ${position}`}
+              key={testimonial.id}
+              className={`testimonial-card-wrapper position-${index}`}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { 
                 opacity: 1, 
                 y: 0,
-                x: displayIndex === 0 ? -20 : displayIndex === 2 ? 20 : 0, // Smooth position shift
-                scale: isCenter ? 1.02 : 0.98,
-                filter: isCenter ? 'brightness(1)' : 'brightness(0.9)'
+                scale: isHovered ? 1.05 : isCenter ? 1.02 : 1,
+                filter: isHovered ? 'brightness(1.1)' : 'brightness(1)'
               } : { opacity: 0, y: 50 }}
               transition={{ 
-                duration: 0.5, 
-                delay: originalIndex * 0.15,
-                ease: "easeInOut",
-                layout: { duration: 0.4 } // Smooth layout transitions
+                duration: 0.6, 
+                delay: index * 0.2,
+                ease: "easeOut"
               }}
-              onHoverStart={() => {
-                if (testimonial.id !== focusedCard) {
-                  setFocusedCard(testimonial.id);
-                }
-              }}
-              layout // Enable layout animations
+              onHoverStart={() => setHoveredCard(testimonial.id)}
+              onHoverEnd={() => setHoveredCard(null)}
             >
               <TiltedCard
                 containerHeight="100%"
                 containerWidth="100%"
                 imageHeight="100%"
                 imageWidth="100%"
-                scaleOnHover={isCenter ? 1.5 : 1.2}
-                rotateAmplitude={isCenter ? 18 : 12}
+                scaleOnHover={1.5}
+                rotateAmplitude={18}
                 showMobileWarning={false}
                 showTooltip={false}
               >
-                <div className={`testimonial-card testimonial-tilted-card ${isCenter ? 'focused' : ''}`}>
+                <div className={`testimonial-card ${isHovered ? 'hovered' : ''}`}>
                   <div className="testimonial-header">
                     <a
                       href={testimonial.linkedin}
@@ -129,19 +113,6 @@ const TestimonialsSection = () => {
                   </div>
                   
                   <p className="testimonial-quote">{testimonial.quote}</p>
-                  
-                  {/* Stable center highlight */}
-                  <AnimatePresence>
-                    {isCenter && (
-                      <motion.div 
-                        className="center-highlight"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </AnimatePresence>
                 </div>
               </TiltedCard>
             </motion.div>

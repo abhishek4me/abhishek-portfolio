@@ -18,7 +18,8 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section className="experience-section">
+    // ADDED: id="experience-section" for smooth scroll targeting
+    <section id="experience-section" className="experience-section">
       <div className="container">
         <ScrollFloat
           animationDuration={1}
