@@ -5,22 +5,27 @@ import DarkVeil from './DarkVeil/DarkVeil';
 import './HeroSection.css';
 
 const HeroSection = () => {
-  // Enhanced smooth scroll function with offset
+  // Smooth scroll to experience-section
   const scrollToExperience = () => {
     const experienceSection = document.getElementById('experience-section');
     if (experienceSection) {
       const offsetTop = experienceSection.offsetTop - 80;
-      
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
+  };
+
+  // Smooth scroll to contact-section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      const offsetTop = contactSection.offsetTop - 80;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     }
   };
 
   return (
     <section className="hero-section">
-      {/* DarkVeil Animated Background */}
+      {/* Animated Background */}
       <div className="darkveil-background">
         <DarkVeil
           hueShift={270}
@@ -34,16 +39,13 @@ const HeroSection = () => {
       </div>
 
       <div className="hero-container">
-        
-        {/* Two-column layout - ProfileCard on left, content on right */}
         <div className="hero-main-content">
-          
-          {/* Left column - Animated ProfileCard with updated info */}
+          {/* Left: ProfileCard */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, x: -50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ 
-              duration: 1.2, 
+            transition={{
+              duration: 1.2,
               delay: 0.5,
               type: "spring",
               stiffness: 100
@@ -55,17 +57,14 @@ const HeroSection = () => {
               title="B.Tech Electronics and CS"
               contactText="Let's Connect"
               avatarUrl="https://iili.io/Fvpn2WX.md.jpg"
-              miniAvatarUrl="https://iili.io/Fvpn2WX.md.jpg"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
-              onContactClick={() => {
-                window.open('https://github.com/abhishek4me', '_blank');
-              }}
+              onContactClick={scrollToContact}
             />
           </motion.div>
 
-          {/* Right column - Content area */}
+          {/* Right: Headings & buttons */}
           <motion.div
             className="content-column"
             initial={{ opacity: 0, x: 50 }}
@@ -77,16 +76,12 @@ const HeroSection = () => {
                 <span className="title-line">ABHISHEK'S</span>
                 <span className="title-line">PORTFOLIO</span>
               </h1>
-              
               <p className="hero-description">
                 B.Tech Electronics & Computer Science Student
               </p>
-              
               <p className="hero-tagline">
                 Passionate about crafting digital experiences with precision and creativity.
               </p>
-              
-              {/* CTA Buttons */}
               <div className="hero-cta-buttons">
                 <motion.button
                   className="hero-btn-primary"
@@ -100,16 +95,13 @@ const HeroSection = () => {
                   className="hero-btn-secondary"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    window.open('https://github.com/abhishek4me', '_blank');
-                  }}
+                  onClick={scrollToContact}
                 >
                   Get In Touch
                 </motion.button>
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

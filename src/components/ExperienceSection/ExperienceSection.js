@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ScrollFloat from '../ScrollFloat/ScrollFloat';
+import CircularGallery from '../CircularGallery/CircularGallery';
 import './ExperienceSection.css';
 
 const ExperienceSection = () => {
@@ -10,15 +11,43 @@ const ExperienceSection = () => {
     triggerOnce: true
   });
 
-  const experiences = [
-    "Freelance Content Writer",
-    "Curious to work on Python",
-    "Leader in multiple group projects & competitions",
-    "Active member, IT workshops & tech networks"
+  // Certificate data with professional achievement images
+  const certificates = [
+    {
+      image: "https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Python Programming Certificate"
+    },
+    {
+      image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Web Development Certification"
+    },
+    {
+      image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Data Analysis Certificate"
+    },
+    {
+      image: "https://images.pexels.com/photos/3182833/pexels-photo-3182833.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Content Writing Award"
+    },
+    {
+      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Leadership Excellence"
+    },
+    {
+      image: "https://images.pexels.com/photos/3182834/pexels-photo-3182834.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Technical Workshop Completion"
+    },
+    {
+      image: "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "Project Management Certification"
+    },
+    {
+      image: "https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
+      text: "IT Networking Certificate"
+    }
   ];
 
   return (
-    // ADDED: id="experience-section" for smooth scroll targeting
     <section id="experience-section" className="experience-section">
       <div className="container">
         <ScrollFloat
@@ -30,28 +59,31 @@ const ExperienceSection = () => {
           containerClassName="experience-title-float"
           textClassName="experience-title-text"
         >
-          Experience & Achievements
+          Certificates & Achievements
         </ScrollFloat>
         
         <motion.div
           ref={ref}
-          className="experience-list"
+          className="gallery-container"
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={index}
-              className="experience-item"
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.15 
-              }}
-            >
-              <div className="experience-bullet"></div>
-              <p>{experience}</p>
-            </motion.div>
-          ))}
+          <div className="gallery-wrapper">
+            <CircularGallery
+              items={certificates}
+              bend={3}
+              textColor="#E0E0E0"
+              borderRadius={0.08}
+              font="bold 24px Inter"
+              scrollSpeed={2}
+              scrollEase={0.02}
+            />
+          </div>
+          
+          <div className="gallery-instructions">
+            <p>Scroll or drag to explore my certificates</p>
+          </div>
         </motion.div>
       </div>
     </section>
