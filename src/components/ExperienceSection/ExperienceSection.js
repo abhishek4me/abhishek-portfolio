@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ScrollFloat from '../ScrollFloat/ScrollFloat';
-import CircularGallery from '../CircularGallery/CircularGallery';
 import './ExperienceSection.css';
+
+const CircularGallery = React.lazy(() => import('../CircularGallery/CircularGallery'));
 
 const ExperienceSection = () => {
   const [ref, inView] = useInView({
@@ -11,39 +12,44 @@ const ExperienceSection = () => {
     triggerOnce: true
   });
 
-  // Certificate data with professional achievement images
+  // **UPDATED: Added your new certificates**
   const certificates = [
     {
-      image: "https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Python Programming Certificate"
+      image: "https://i.ibb.co/jZhwx8Kf/Abhishek-R-S-level-up-page-0001.jpg",
+      text: "Level Up Certificate"
     },
     {
-      image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Web Development Certification"
+      image: "https://i.ibb.co/bj40prnh/designx2025.png",
+      text: "DesignX 2025 Certificate"
     },
     {
-      image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Data Analysis Certificate"
+      image: "https://i.ibb.co/wZ443nXf/quick-code.jpg",
+      text: "Quick Code Certificate"
     },
     {
-      image: "https://images.pexels.com/photos/3182833/pexels-photo-3182833.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Content Writing Award"
+      image: "https://i.ibb.co/Gv4dVjPL/Screenshot-2025-07-23-004715.png",
+      text: "Achievement Certificate"
+    },
+    // **NEW CERTIFICATES ADDED**
+    {
+      image: "https://i.ibb.co/WvmQm8zP/Certificate-Abhishek-1.jpg",
+      text: "Certificate Abhishek 1"
     },
     {
-      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Leadership Excellence"
+      image: "https://i.ibb.co/8DVq9vRh/Certificate-Abhishek-2.jpg",
+      text: "Certificate Abhishek 2"
     },
     {
-      image: "https://images.pexels.com/photos/3182834/pexels-photo-3182834.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Technical Workshop Completion"
+      image: "https://i.ibb.co/4n53SzP5/Certificate-Abhishek-3.jpg",
+      text: "Certificate Abhishek 3"
     },
     {
-      image: "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "Project Management Certification"
+      image: "https://i.ibb.co/7xnGKJqN/Certificate-Abhishek-4.jpg",
+      text: "Certificate Abhishek 4"
     },
     {
-      image: "https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      text: "IT Networking Certificate"
+      image: "https://i.ibb.co/XZBv4g36/Sherlocks-2.png",
+      text: "Sherlocks Certificate"
     }
   ];
 
@@ -70,19 +76,26 @@ const ExperienceSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <div className="gallery-wrapper">
-            <CircularGallery
-              items={certificates}
-              bend={3}
-              textColor="#E0E0E0"
-              borderRadius={0.08}
-              font="bold 24px Inter"
-              scrollSpeed={2}
-              scrollEase={0.02}
-            />
+            <Suspense fallback={
+              <div className="gallery-loading">
+                <div className="loading-spinner"></div>
+                <p>Loading certificates...</p>
+              </div>
+            }>
+              <CircularGallery
+                items={certificates}
+                bend={3}
+                textColor="#E0E0E0"
+                borderRadius={0.08}
+                font="bold 24px Inter"
+                scrollSpeed={2}
+                scrollEase={0.02}
+              />
+            </Suspense>
           </div>
           
           <div className="gallery-instructions">
-            <p>Scroll or drag to explore my certificates</p>
+            <p>Scroll, drag, or click certificates to explore achievements</p>
           </div>
         </motion.div>
       </div>

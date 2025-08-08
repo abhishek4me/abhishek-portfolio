@@ -1,79 +1,53 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-import './ScrollFloat.css';
-
-gsap.registerPlugin(ScrollTrigger);
-
-const ScrollFloat = ({
-  children,
-  scrollContainerRef,
-  containerClassName = "",
-  textClassName = "",
+const ScrollFloat = ({ 
+  children, 
   animationDuration = 1,
   ease = 'back.inOut(2)',
   scrollStart = 'center bottom+=50%',
   scrollEnd = 'bottom bottom-=40%',
-  stagger = 0.2
+  stagger = 0.2,
+  containerClassName = '',
+  textClassName = ''
 }) => {
-  const containerRef = useRef(null);
-
-  const splitText = useMemo(() => {
-    const text = typeof children === 'string' ? children : '';
-    return text.split("").map((char, index) => (
-      <span className="char" key={index}>
-        {char === " " ? "\u00A0" : char}
-      </span>
-    ));
-  }, [children]);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const scroller =
-      scrollContainerRef && scrollContainerRef.current
-        ? scrollContainerRef.current
-        : window;
-
-    const charElements = el.querySelectorAll('.char');
-
-    gsap.fromTo(
-      charElements,
-      {
-        willChange: 'opacity, transform',
-        opacity: 0,
-        yPercent: 120,
-        scaleY: 2.3,
-        scaleX: 0.7,
-        transformOrigin: '50% 0%'
-      },
-      {
-        duration: animationDuration,
-        ease: ease,
-        opacity: 1,
-        yPercent: 0,
-        scaleY: 1,
-        scaleX: 1,
-        stagger: stagger,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: scrollStart,
-          end: scrollEnd,
-          scrub: true
-        }
-      }
-    );
-  }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
+  const words = typeof children === 'string' ? children.split(' ') : [children];
 
   return (
-    <h2 ref={containerRef} className={`scroll-float ${containerClassName}`}>
-      <span className={`scroll-float-text ${textClassName}`}>
-        {splitText}
-      </span>
-    </h2>
+    <div className={containerClassName}>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ 
+          duration: animationDuration,
+          ease: ease === 'back.inOut(2)' ? [0.68, -0.55, 0.265, 1.55] : ease
+        }}
+      >
+        {words.length > 1 ? (
+          <h1 className={textClassName}>
+            {words.map((word, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: animationDuration * 0.8,
+                  delay: index * stagger,
+                  ease: ease === 'back.inOut(2)' ? [0.68, -0.55, 0.265, 1.55] : ease
+                }}
+                style={{ display: 'inline-block', marginRight: '0.3em' }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </h1>
+        ) : (
+          <h1 className={textClassName}>{children}</h1>
+        )}
+      </motion.div>
+    </div>
   );
 };
 

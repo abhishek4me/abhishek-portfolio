@@ -1,84 +1,133 @@
 .experience-section {
-  min-height: 100vh;
-  background: linear-gradient(135deg, rgba(6, 0, 16, 0.95) 0%, rgba(108, 53, 225, 0.1) 100%);
-  padding: 5rem 0;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
+  padding: 4rem 0;
+  background: transparent;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
 }
 
-.experience-section .container {
+.container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
-  width: 100%;
-}
-
-/* ScrollFloat title styling */
-.experience-title-float {
-  text-align: center;
-  margin-bottom: 3rem;
 }
 
 .experience-title-text {
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+  font-weight: 800;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  background: linear-gradient(135deg, #FFFFFF 0%, #9F7AEA 50%, #6C35E1 100%);
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #fff 0%, #a288fd 30%, #6C35E1 60%, #9F7AEA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 0;
+  background-size: 300% 300%;
+  animation: titleGradientFlow 6s ease-in-out infinite;
+  letter-spacing: -2px;
+  line-height: 1.1;
 }
 
-/* Gallery container styling */
+@keyframes titleGradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 .gallery-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  position: relative;
 }
 
 .gallery-wrapper {
   width: 100%;
-  height: 600px;
+  max-width: 900px;
+  margin: 0 auto;
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  background: rgba(108, 53, 225, 0.05);
-  border: 1px solid rgba(159, 122, 234, 0.2);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 40px rgba(108, 53, 225, 0.3);
+}
+
+.gallery-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  background: rgba(159, 122, 234, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(159, 122, 234, 0.2);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(159, 122, 234, 0.3);
+  border-top: 4px solid #9F7AEA;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.gallery-loading p {
+  color: #9F7AEA;
+  font-size: 1rem;
+  margin: 0;
 }
 
 .gallery-instructions {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(159, 122, 234, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(159, 122, 234, 0.2);
 }
 
 .gallery-instructions p {
-  color: rgba(224, 224, 224, 0.8);
+  color: #e0e0e0;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
-  font-style: italic;
-  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive design */
+/* Responsive adjustments for landscape format */
+@media (max-width: 1024px) {
+  .gallery-wrapper {
+    max-width: 700px;
+  }
+  
+  .circular-gallery {
+    height: 300px;
+  }
+  
+  .gallery-loading {
+    height: 300px;
+  }
+}
+
 @media (max-width: 768px) {
-  .experience-section {
-    padding: 3rem 0;
+  .container {
+    padding: 0 1rem;
   }
   
   .gallery-wrapper {
-    height: 500px;
-    border-radius: 16px;
+    max-width: 100%;
   }
   
-  .experience-title-float {
-    margin-bottom: 2rem;
+  .circular-gallery {
+    height: 250px;
+  }
+  
+  .gallery-loading {
+    height: 250px;
   }
   
   .gallery-instructions p {
@@ -87,35 +136,11 @@
 }
 
 @media (max-width: 480px) {
-  .experience-section .container {
-    padding: 0 1rem;
+  .circular-gallery {
+    height: 200px;
   }
   
-  .gallery-wrapper {
-    height: 400px;
-    border-radius: 12px;
+  .gallery-loading {
+    height: 200px;
   }
-  
-  .experience-title-float {
-    margin-bottom: 1.5rem;
-  }
-  
-  .gallery-instructions p {
-    font-size: 0.85rem;
-  }
-}
-
-/* Loading state */
-.gallery-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, 
-    rgba(108, 53, 225, 0.1) 0%, 
-    rgba(159, 122, 234, 0.2) 50%, 
-    rgba(108, 53, 225, 0.1) 100%);
-  z-index: -1;
 }
