@@ -12,7 +12,7 @@ const ExperienceSection = () => {
     triggerOnce: true
   });
 
-  // **UPDATED: Added your new certificates**
+  // **UPDATED: Added NASSCOM certificate**
   const certificates = [
     {
       image: "https://i.ibb.co/jZhwx8Kf/Abhishek-R-S-level-up-page-0001.jpg",
@@ -30,26 +30,30 @@ const ExperienceSection = () => {
       image: "https://i.ibb.co/Gv4dVjPL/Screenshot-2025-07-23-004715.png",
       text: "Achievement Certificate"
     },
-    // **NEW CERTIFICATES ADDED**
     {
       image: "https://i.ibb.co/WvmQm8zP/Certificate-Abhishek-1.jpg",
-      text: "Certificate Abhishek 1"
+      text: "Professional Certification I"
     },
     {
       image: "https://i.ibb.co/8DVq9vRh/Certificate-Abhishek-2.jpg",
-      text: "Certificate Abhishek 2"
+      text: "Professional Certification II"
     },
     {
       image: "https://i.ibb.co/4n53SzP5/Certificate-Abhishek-3.jpg",
-      text: "Certificate Abhishek 3"
+      text: "Professional Certification III"
     },
     {
       image: "https://i.ibb.co/7xnGKJqN/Certificate-Abhishek-4.jpg",
-      text: "Certificate Abhishek 4"
+      text: "Professional Certification IV"
     },
     {
       image: "https://i.ibb.co/XZBv4g36/Sherlocks-2.png",
-      text: "Sherlocks Certificate"
+      text: "Sherlocks Achievement"
+    },
+    // **NEW NASSCOM CERTIFICATE ADDED**
+    {
+      image: "https://i.ibb.co/V8ytdg8/Certificate-of-nasscom.jpg",
+      text: "NASSCOM Certification"
     }
   ];
 
